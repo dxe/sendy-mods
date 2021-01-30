@@ -24,7 +24,7 @@ for m in modifications:
 	# string replacment
 	newString = ''
 	# if not login page, prepend/append it instead of removing it
-	if m[0] != 'login.php' or m[0] != 'subscribe.php' or m[0] != 'confirm.php':
+	if m[0] != 'login.php' and m[0] != 'subscribe.php' and m[0] != 'confirm.php':
 		newString = adminOnlyPre + m[1] + adminOnlyPost;
 	data = data.replace(m[1], newString)
 	# close the input file
