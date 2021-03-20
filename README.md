@@ -68,3 +68,18 @@ define('S3_BUCKET_NAME', 'value');
 ?>
 ```
 3. Add S3.php file to includes/helpers/
+
+## Additional hacks
+###Allow segmentation by relative date
+1. Add to includes/segments/main.php:
+```
+else if($com=='WITHIN_DAYS') //within last days
+{
+    $now = strtotime('now');
+    $date_start = $now - ($needle * 86400);
+
+    if($haystack > $date_start)
+        push_into_cf_hold_array($sid);
+}
+```
+2. Manually update the seg_cons table in the database using "WITHIN_DAYS" as the comparison and the number of days as the val. Note that these will not be visible in the UI, but it will work.
