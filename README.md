@@ -70,7 +70,7 @@ define('S3_BUCKET_NAME', 'value');
 3. Add S3.php file to includes/helpers/
 
 ## Additional hacks
-###Allow segmentation by relative date
+### Allow segmentation by relative date
 1. Add to includes/segments/main.php:
 ```
 else if($com=='WITHIN_DAYS') //within last days
