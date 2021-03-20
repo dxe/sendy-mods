@@ -82,4 +82,32 @@ else if($com=='WITHIN_DAYS') //within last days
         push_into_cf_hold_array($sid);
 }
 ```
-2. Manually update the seg_cons table in the database using "WITHIN_DAYS" as the comparison and the number of days as the val. Note that these will not be visible in the UI, but it will work.
+2. Change the folowing in includes/segments/segmentate.php in the push_into_cf_hold_array() function:
+```
+if ($comparison == 'BETWEEN') {
+    $conditions = $operator.' subscribers.'.$field.' '.$comparison.' '.$val.' ';
+}
+elseif ($comparison == 'WITHIN_DAYS') {
+    $now = strtotime('now');
+    $value = $now - ($needle * 86400);
+    $comparison = '>';
+    $conditions = $operator.' subscribers.'.$field.' '.$comparison.' "'.$val.'" ';
+}
+else {
+    $conditions = $operator.' subscribers.'.$field.' '.$comparison.' "'.$val.'" ';
+}
+...
+if ($comparison=='BETWEEN') {
+    $conditions .= $operator.' subscribers.'.$field.' '.$comparison.' '.$val.' ';
+}
+elseif ($comparison=='WITHIN_DAYS') {
+    $now = strtotime('now');
+    $value = $now - ($needle * 86400);
+    $comparison = '>';
+    $conditions .= $operator.' subscribers.'.$field.' '.$comparison.' "'.$val.'" ';
+}
+else {
+    $conditions .= $operator.' subscribers.'.$field.' '.$comparison.' "'.$val.'" ';
+}
+``` 
+3. Manually update the seg_cons table in the database using "WITHIN_DAYS" as the comparison and the number of days as the val. Note that these will not be visible in the UI, but it will work.
