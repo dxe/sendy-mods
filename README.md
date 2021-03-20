@@ -15,7 +15,7 @@ Created by Jake Hobbs for DxE on 2020.06.25
 3. Login to Sendy and confirm that all changes were successful
 
 ## Using S3 for uploads:
-1. Add this to invludes/config.php:
+1. Add this to includes/config.php:
 ```
 define('AWS_ACCESS_KEY', 'value');
 define('AWS_SECRET_KEY', 'value');
