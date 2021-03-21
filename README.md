@@ -89,7 +89,7 @@ if ($comparison == 'BETWEEN') {
 }
 elseif ($comparison == 'WITHIN_DAYS') {
     $now = strtotime('now');
-    $value = $now - ($needle * 86400);
+    $val = $now - ($val * 86400);
     $comparison = '>';
     $conditions = $operator.' subscribers.'.$field.' '.$comparison.' "'.$val.'" ';
 }
@@ -102,7 +102,7 @@ if ($comparison=='BETWEEN') {
 }
 elseif ($comparison=='WITHIN_DAYS') {
     $now = strtotime('now');
-    $value = $now - ($needle * 86400);
+    $val = $now - ($val * 86400);
     $comparison = '>';
     $conditions .= $operator.' subscribers.'.$field.' '.$comparison.' "'.$val.'" ';
 }
