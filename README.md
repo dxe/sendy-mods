@@ -81,6 +81,14 @@ else if($com=='WITHIN_DAYS') //within last days
     if($haystack > $date_start)
         push_into_cf_hold_array($sid);
 }
+else if($com=='NOT_WI_DAYS') //not within last days
+{
+    $now = strtotime('now');
+    $date_start = $now - ($needle * 86400);
+
+    if($haystack < $date_start)
+        push_into_cf_hold_array($sid);
+}
 ```
 2. Change the folowing in includes/segments/segmentate.php in the push_into_cf_hold_array() function:
 ```
