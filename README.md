@@ -1,5 +1,5 @@
 # sendy-mods
-Security modifications for Sendy
+Security modifications and enhancements for Sendy
 
 Created by Jake Hobbs for DxE on 2020.06.25
 
