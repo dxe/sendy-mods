@@ -101,6 +101,12 @@ elseif ($comparison == 'WITHIN_DAYS') {
     $comparison = '>';
     $conditions = $operator.' subscribers.'.$field.' '.$comparison.' "'.$val.'" ';
 }
+elseif ($comparison == 'NOT_WI_DAYS') {
+    $now = strtotime('now');
+    $val = $now - ($val * 86400);
+    $comparison = '<';
+    $conditions = $operator.' subscribers.'.$field.' '.$comparison.' "'.$val.'" ';
+}
 else {
     $conditions = $operator.' subscribers.'.$field.' '.$comparison.' "'.$val.'" ';
 }
@@ -112,6 +118,12 @@ elseif ($comparison=='WITHIN_DAYS') {
     $now = strtotime('now');
     $val = $now - ($val * 86400);
     $comparison = '>';
+    $conditions .= $operator.' subscribers.'.$field.' '.$comparison.' "'.$val.'" ';
+}
+elseif ($comparison=='NOT_WI_DAYS') {
+    $now = strtotime('now');
+    $val = $now - ($val * 86400);
+    $comparison = '<';
     $conditions .= $operator.' subscribers.'.$field.' '.$comparison.' "'.$val.'" ';
 }
 else {
