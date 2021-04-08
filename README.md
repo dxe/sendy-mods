@@ -1,8 +1,6 @@
 # sendy-mods
 Security modifications and enhancements for Sendy
 
-Created by Jake Hobbs for DxE on 2020.06.25
-
 ## Features:
 - Disables "forgot password" option on login page
 - Disables "subscriber export" on subscriber list pages for non-admin users
